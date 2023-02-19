@@ -1,0 +1,22 @@
+.main {
+    background-color: white;
+    margin: 0 15px 0 15px;
+    border-radius: 4px;
+    
+    &__container {
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+
+    }
+
+    &__title {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-left: 20px;  
+
+    }
+}
