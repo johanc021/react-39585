@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Navbar} from 'flowbite-react';
+import { Navbar} from 'flowbite-react';
 import React from 'react';
 import Logo from '../../Logo.svg';
 import './Navegacion.scss';

@@ -19,4 +19,18 @@
         margin-left: 20px;  
 
     }
+
+    &__libros {
+        max-width: 1300px;
+        margin: 15px auto;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .cardContainer{
+        width: 300px;
+    }
 }
+
