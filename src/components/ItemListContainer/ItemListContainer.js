@@ -1,79 +1,96 @@
-import { TextInput, Card } from 'flowbite-react';
+import { TextInput } from 'flowbite-react';
 import React from 'react';
 import './ItemListContainer.scss'
+import { useState, useEffect } from 'react'
+import BookCard from '../BookCard/BookCard';
+import data from '../../data/data.json'
+
 
 const ItemListContainer = ({greeting}) => {
-
 	
+	const [libros, setLibros] = useState([]);
+	
+	const resultadoPagina = 12
+	
+	const [siguientePagina, setSiguientePagina] = useState(1);
+
+	const indexResultadoPasado = siguientePagina * resultadoPagina;
+	const indexResultadoInicial = indexResultadoPasado - resultadoPagina;
+	const currentResults = libros.slice(indexResultadoInicial, indexResultadoPasado);
+
+	const capturarDatos = () => {
+		return new Promise((resolve, reject) => {
+			resolve(data)
+		})
+	}
+
+	useEffect(() => {
+		capturarDatos()
+			.then((res) =>{
+				setLibros(res)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [])
+
+
 
 	return (
 		<main className='main'>
+
 			<div className='main__container'>
 	
 				<h1 className='main__title'>{greeting}</h1>
 
-
-				<TextInput size={31}
+				<TextInput 
+					size={32}
+					fontSize= '18px'
 					id="buscar"
 					type="text"
 					placeholder="Buscar..."
 					required={true}
+
 				/>
 			</div>
 
-			<div className='main__libros gap-4'>
-				
-				<div className="cardContainer max-w-sm">
-					<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
-						<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-							Noteworthy technology acquisitions 2021
-						</h5>
-						<p className="font-normal text-gray-700 dark:text-gray-400">
-							Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-						</p>
-					</Card>
-				</div>
+			<div className='main__libros gap-3'>
 
-				<div className="cardContainer max-w-sm">
-					<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
-						<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-							Noteworthy technology acquisitions 2021
-						</h5>
-						<p className="font-normal text-gray-700 dark:text-gray-400">
-							Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-						</p>
-					</Card>
-				</div>
-				<div className="cardContainer max-w-sm">
-					<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
-						<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-							Noteworthy technology acquisitions 2021
-						</h5>
-						<p className="font-normal text-gray-700 dark:text-gray-400">
-							Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-						</p>
-					</Card>
-				</div>
-				<div className="cardContainer max-w-sm">
-					<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
-						<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-							Noteworthy technology acquisitions 2021
-						</h5>
-						<p className="font-normal text-gray-700 dark:text-gray-400">
-							Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-						</p>
-					</Card>
-				</div>
-				<div className="cardContainer max-w-sm">
-					<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
-						<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-							Noteworthy technology acquisitions 2021
-						</h5>
-						<p className="font-normal text-gray-700 dark:text-gray-400">
-							Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-						</p>
-					</Card>
-				</div>
+				{
+					currentResults.map(libro => (
+						<BookCard
+							key={libro.id}
+							titulo={libro.titulo}
+							imagen={libro.imagen}
+							genero={libro.genero}
+							autor={libro.autor}
+							editorial={libro.editorial}
+							anio={libro.año}
+
+						/>
+					
+					))
+				}
+				
+				{/* {libros.map( libro => (
+					<BookCard 
+						key={libro.id} 
+						titulo={libro.titulo} 
+						imagen={libro.imagen} 
+						genero={libro.genero} 
+						autor={libro.autor} 
+						editorial={libro.editorial} 
+						anio={libro.año}
+			
+			/>
+					))
+				} */}
+
+			</div> 
+			<div>
+				<button onClick={() => setSiguientePagina(siguientePagina - 1)}>Anterior</button>
+				<button onClick={() => setSiguientePagina(siguientePagina + 1)}>Siguiente</button>
+
 			</div>
 		</main>
 	);

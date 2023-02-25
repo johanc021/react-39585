@@ -9,7 +9,7 @@ const Navegacion = () => {
 	return (
 		<div className='header'>
 
-			<Navbar
+			<Navbar className='navbar'
 				fluid={true}
 				rounded={true}
 			>

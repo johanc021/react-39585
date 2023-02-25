@@ -1,16 +1,21 @@
 .main {
+    /* background-image: linear-gradient( 135deg, #FFF5C3 10%, #9452A5 100%); */
     background-color: white;
     margin: 0 15px 0 15px;
     border-radius: 4px;
     
     &__container {
+        max-width: 1700px;
+        margin: 0 auto;
         padding: 15px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
-
+        & h1 {
+            font-size: 1.7em;
+        }
     }
 
     &__title {
@@ -19,6 +24,10 @@
         margin-left: 20px;  
 
     }
+
+    /* & .main__input {
+        
+    } */
 
     &__libros {
         max-width: 1300px;
@@ -29,8 +38,23 @@
         flex-wrap: wrap;
     }
 
-    .cardContainer{
+    /* .cardContainer{
         width: 300px;
+    } */
+}
+
+@media (max-width: 665px) {
+    .main__container {
+        display: block;
+
+        & h1 {
+            margin: 10px;
+        }
     }
 }
 
+@media (min-width: 1600px) {
+    .main__libros {
+        max-width: 1600px;
+    }
+}
