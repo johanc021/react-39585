@@ -2,7 +2,7 @@ import { Navbar} from 'flowbite-react';
 import React from 'react';
 import Logo from '../../Logo.svg';
 import './Navegacion.scss';
-import CarWidget from '../CarWidget/CarWidget';
+import CartWidget from '../CartWidget/CartWidget';
 import UserWidget from '../UserWidget/UserWidget';
 
 const Navegacion = () => {
@@ -27,7 +27,7 @@ const Navegacion = () => {
 				<div className="flex md:order-2 gap-3">
 
 					{/* Icono Carrito de compras */}
-					<CarWidget/>
+					<CartWidget/>
 
 					{/* Icono avatar */}
 					<UserWidget/>

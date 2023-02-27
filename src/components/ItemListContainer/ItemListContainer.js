@@ -3,27 +3,33 @@ import React from 'react';
 import './ItemListContainer.scss'
 import { useState, useEffect } from 'react'
 import BookCard from '../BookCard/BookCard';
-import data from '../../data/data.json'
+import { capturarDatos } from '../../helpers/capturarDatos'
 
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
 	
+	// estado delibros
 	const [libros, setLibros] = useState([]);
 	
-	const resultadoPagina = 12
-	
+	//estado de paginas
 	const [siguientePagina, setSiguientePagina] = useState(1);
-
+	
+	//numero de libros por pagina
+	const resultadoPagina = 10
+	
+	//Index de paginacion anterior
 	const indexResultadoPasado = siguientePagina * resultadoPagina;
+	
+	//Index de paginacion inicial
 	const indexResultadoInicial = indexResultadoPasado - resultadoPagina;
-	const currentResults = libros.slice(indexResultadoInicial, indexResultadoPasado);
+	
+	//calculo de total de paginas
+	const totalPaginas = Math.ceil(libros.length / resultadoPagina);
 
-	const capturarDatos = () => {
-		return new Promise((resolve, reject) => {
-			resolve(data)
-		})
-	}
+	//posicion de libros en la paginacion
+	const librosPaginados = libros.slice(indexResultadoInicial, indexResultadoPasado);
 
+	// captura de datos y llenado de datos en el estado Libros
 	useEffect(() => {
 		capturarDatos()
 			.then((res) =>{
@@ -41,9 +47,9 @@ const ItemListContainer = ({greeting}) => {
 
 			<div className='main__container'>
 	
-				<h1 className='main__title'>{greeting}</h1>
+				<h1 className='main__title'>NUESTRO CATALOGO</h1>
 
-				<TextInput 
+				<TextInput
 					size={32}
 					fontSize= '18px'
 					id="buscar"
@@ -54,43 +60,32 @@ const ItemListContainer = ({greeting}) => {
 				/>
 			</div>
 
-			<div className='main__libros gap-3'>
+			<section className='section__libros gap-3'>
 
 				{
-					currentResults.map(libro => (
+					librosPaginados.map(libro => (
 						<BookCard
 							key={libro.id}
-							titulo={libro.titulo}
+							/* titulo={libro.titulo}
 							imagen={libro.imagen}
 							genero={libro.genero}
-							autor={libro.autor}
+							autor={libro.autor} 
 							editorial={libro.editorial}
-							anio={libro.año}
-
+							anio={libro.anio} */
+							{...libro}
 						/>
-					
 					))
 				}
 				
-				{/* {libros.map( libro => (
-					<BookCard 
-						key={libro.id} 
-						titulo={libro.titulo} 
-						imagen={libro.imagen} 
-						genero={libro.genero} 
-						autor={libro.autor} 
-						editorial={libro.editorial} 
-						anio={libro.año}
-			
-			/>
-					))
-				} */}
-
-			</div> 
-			<div>
-				<button onClick={() => setSiguientePagina(siguientePagina - 1)}>Anterior</button>
-				<button onClick={() => setSiguientePagina(siguientePagina + 1)}>Siguiente</button>
-
+			</section> 
+			<div className='main__paginacion'>
+				{/* <Pagination
+					currentPage={1}
+					totalPages={totalPaginas}
+					onPageChange={onPageChange}
+				/> */}
+				<button onClick={() => setSiguientePagina(siguientePagina - 1)} disabled={siguientePagina === 1}>Anterior</button>
+				<button onClick={() => setSiguientePagina(siguientePagina + 1)} disabled={siguientePagina === totalPaginas}>Siguiente</button>
 			</div>
 		</main>
 	);

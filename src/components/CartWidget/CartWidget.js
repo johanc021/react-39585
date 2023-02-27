@@ -1,8 +1,8 @@
 import React from 'react';
-import './CarWidget.scss';
+import './CartWidget.scss';
 import { CiShoppingCart } from "react-icons/ci";
 
-const CarWidget = () => {
+const CartWidget = () => {
 	return (
 		<button className='btn-icon'>
 			<CiShoppingCart size={28} />
@@ -11,4 +11,4 @@ const CarWidget = () => {
 	);
 };
 
-export default CarWidget;
+export default CartWidget;

@@ -10,7 +10,7 @@ function App() {
     return (
         <>
             <Navegacion />
-            <ItemListContainer greeting={mensaje}/>
+            <ItemListContainer/>
             <PiePagina/>
         </>
     );

@@ -25,11 +25,16 @@
 
     }
 
-    /* & .main__input {
-        
-    } */
+    &__paginacion {
+        background-color: blue;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
-    &__libros {
+ .section__libros {
         max-width: 1300px;
         margin: 15px auto;
         padding: 10px;
@@ -37,11 +42,6 @@
         justify-content: space-around;
         flex-wrap: wrap;
     }
-
-    /* .cardContainer{
-        width: 300px;
-    } */
-}
 
 @media (max-width: 665px) {
     .main__container {
