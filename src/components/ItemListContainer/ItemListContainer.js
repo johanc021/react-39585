@@ -1,9 +1,10 @@
-import { TextInput } from 'flowbite-react';
+
 import React from 'react';
 import './ItemListContainer.scss'
 import { useState, useEffect } from 'react'
-import BookCard from '../BookCard/BookCard';
 import { capturarDatos } from '../../helpers/capturarDatos'
+import ItemList from '../ItemList/ItemList';
+import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 
 
 const ItemListContainer = () => {
@@ -43,51 +44,24 @@ const ItemListContainer = () => {
 
 
 	return (
-		<main className='main'>
+		
+		<>
+			<ItemList librosPaginados={librosPaginados}/>
 
-			<div className='main__container'>
-	
-				<h1 className='main__title'>NUESTRO CATALOGO</h1>
-
-				<TextInput
-					size={32}
-					fontSize= '18px'
-					id="buscar"
-					type="text"
-					placeholder="Buscar..."
-					required={true}
-
-				/>
-			</div>
-
-			<section className='section__libros gap-3'>
-
-				{
-					librosPaginados.map(libro => (
-						<BookCard
-							key={libro.id}
-							/* titulo={libro.titulo}
-							imagen={libro.imagen}
-							genero={libro.genero}
-							autor={libro.autor} 
-							editorial={libro.editorial}
-							anio={libro.anio} */
-							{...libro}
-						/>
-					))
-				}
+			<div className='main__paginacion gap-4'>
 				
-			</section> 
-			<div className='main__paginacion'>
-				{/* <Pagination
-					currentPage={1}
-					totalPages={totalPaginas}
-					onPageChange={onPageChange}
-				/> */}
-				<button onClick={() => setSiguientePagina(siguientePagina - 1)} disabled={siguientePagina === 1}>Anterior</button>
-				<button onClick={() => setSiguientePagina(siguientePagina + 1)} disabled={siguientePagina === totalPaginas}>Siguiente</button>
+				<button onClick={() => setSiguientePagina(siguientePagina - 1)} disabled={siguientePagina === 1}><AiOutlineDoubleLeft/></button>
+
+				<span>{siguientePagina + ' de ' + totalPaginas}</span>
+
+				<button onClick={() => setSiguientePagina(siguientePagina + 1)} disabled={siguientePagina === totalPaginas}><AiOutlineDoubleRight/></button>
+				
 			</div>
-		</main>
+		</>
+
+
+		
+
 	);
 };
 

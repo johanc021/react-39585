@@ -1,60 +1,25 @@
-.main {
-    /* background-image: linear-gradient( 135deg, #FFF5C3 10%, #9452A5 100%); */
-    background-color: white;
-    margin: 0 15px 0 15px;
-    border-radius: 4px;
-    
-    &__container {
-        max-width: 1700px;
-        margin: 0 auto;
-        padding: 15px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+.main__paginacion {
+    /* background-color: blue; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        & h1 {
-            font-size: 1.7em;
-        }
-    }
-
-    &__title {
-        font-size: 1.3em;
+    & span {
+        color: white;
+        font-size: 17px;
         font-weight: bold;
-        margin-left: 20px;  
-
     }
 
-    &__paginacion {
-        background-color: blue;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
+    & button {
+        font-size: 32px;
+        color: white;
 
- .section__libros {
-        max-width: 1300px;
-        margin: 15px auto;
-        padding: 10px;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
-
-@media (max-width: 665px) {
-    .main__container {
-        display: block;
-
-        & h1 {
-            margin: 10px;
+        &:hover{
+            color: #60a4ff;
         }
     }
+
+
 }
 
-@media (min-width: 1600px) {
-    .main__libros {
-        max-width: 1600px;
-    }
-}
