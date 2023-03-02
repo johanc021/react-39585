@@ -5,12 +5,15 @@ import { useState, useEffect } from 'react'
 import { capturarDatos } from '../../helpers/capturarDatos'
 import ItemList from '../ItemList/ItemList';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
+import Spinner from "../Spinner/Spinner";
 
 
 const ItemListContainer = () => {
 	
 	// estado delibros
 	const [libros, setLibros] = useState([]);
+
+	const [loading, setLoading] = useState(true);
 	
 	//estado de paginas
 	const [siguientePagina, setSiguientePagina] = useState(1);
@@ -39,6 +42,9 @@ const ItemListContainer = () => {
 			.catch((err) => {
 				console.log(err)
 			})
+			.finally(() => {
+				setLoading(false)
+			})
 	}, [])
 
 
@@ -46,7 +52,29 @@ const ItemListContainer = () => {
 	return (
 		
 		<>
-			<ItemList librosPaginados={librosPaginados}/>
+			{
+				loading
+					? <Spinner />
+					: libros.length === 0
+						? {/* <NoProducts /> */}
+						: (
+							<>
+								<ItemList librosPaginados={librosPaginados} />
+
+								<div className='main__paginacion gap-4'>
+
+									<button onClick={() => setSiguientePagina(siguientePagina - 1)} disabled={siguientePagina === 1}><AiOutlineDoubleLeft /></button>
+
+									<span>{siguientePagina + ' de ' + totalPaginas}</span>
+
+									<button onClick={() => setSiguientePagina(siguientePagina + 1)} disabled={siguientePagina === totalPaginas}><AiOutlineDoubleRight /></button>
+
+								</div>
+							</>
+						) 
+			}
+
+			{/* <ItemList librosPaginados={librosPaginados}/>
 
 			<div className='main__paginacion gap-4'>
 				
@@ -56,12 +84,8 @@ const ItemListContainer = () => {
 
 				<button onClick={() => setSiguientePagina(siguientePagina + 1)} disabled={siguientePagina === totalPaginas}><AiOutlineDoubleRight/></button>
 				
-			</div>
+			</div> */}
 		</>
-
-
-		
-
 	);
 };
 

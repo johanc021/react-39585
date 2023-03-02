@@ -5,7 +5,6 @@ import PiePagina from './components/PiePagina/PiePagina';
 
 function App() {
 
-    const mensaje = "NUESTRO CATALOGO"
 
     return (
         <>

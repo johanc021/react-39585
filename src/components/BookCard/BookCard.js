@@ -6,13 +6,13 @@ import { Button } from 'flowbite-react'
 
 function BookCard( { titulo, imagen, genero, autor, editorial, anio, precio }) {
 
-	const formatoPrecio = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(precio)
+	const formatoPrecio = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits:0 }).format(precio)
 
 	return (
 		<div class="card">
 			<div class="face front">
 				<img src={imagen} alt={titulo}></img>
-				<h3>{genero.toUpperCase()}</h3>
+				<h5>{genero.toUpperCase()}</h5>
 			</div>
 			<div class="face back">
 				<h4><strong>{titulo.toUpperCase()}</strong></h4>
