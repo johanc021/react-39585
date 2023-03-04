@@ -6,7 +6,7 @@ function Spinner() {
     return (
         <div className="spinner">
             {<PropagateLoader 
-            color="#36d7b7"
+            color="#FFFFFF"
             size={15}
             speedMultiplier={1}
             />}

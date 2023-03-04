@@ -5,3 +5,13 @@
 .navbar {
     /* background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%); */
 }
+
+.navbar__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar__link {
+    font-size: 16px;
+}
