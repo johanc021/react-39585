@@ -1,4 +1,3 @@
-import useEffect from 'react'
 import BookCard from '../BookCard/BookCard';
 import { TextInput } from 'flowbite-react';
 import './ItemList.scss'

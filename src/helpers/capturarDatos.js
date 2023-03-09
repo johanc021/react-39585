@@ -7,3 +7,9 @@ export const capturarDatos = () => {
             }, 1400)
         })
     }
+
+export const generos = () => {
+    return new Promise((resolve, reject) => {
+        resolve(data)
+    })
+}

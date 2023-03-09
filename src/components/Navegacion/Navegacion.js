@@ -1,15 +1,31 @@
-import { Navbar} from 'flowbite-react';
-import React from 'react';
-import Logo from '../../Logo.svg';
 import './Navegacion.scss';
+import { Navbar, Dropdown } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
+import Logo from '../../Logo.svg';
 import CartWidget from '../CartWidget/CartWidget';
 import UserWidget from '../UserWidget/UserWidget';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, NavLink } from 'react-router-dom';
+import { generos } from '../../helpers/capturarDatos'
 
 const Navegacion = () => {
 
 	const location = useLocation();
+	
+	const [libros, setLibros] = useState([]);
 
+	useEffect(() => {
+		generos()
+		.then((res)=>{
+			setLibros(res)
+		})
+	},[])
+
+
+	// Generar generos sin repetir
+	const generosUnicos = [...new Set(libros.map((lib) => lib.genero))]
+
+	/* const urlMinuscula = generosUnicos.map((gen) => gen.toLowerCase())
+	console.log(urlMinuscula) */
 
 	return (
 		<div className='header'>
@@ -18,18 +34,16 @@ const Navegacion = () => {
 				fluid={true}
 				rounded={true}
 			>
-				<Navbar.Brand>
-					<Link className='navbar__logo' to="/">
-						<img
-							src={Logo}
-							className="mr-3 h-6 sm:h-9"
-							alt="Logo"
-						/>
-						<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-							MAGIC BOOK
-						</span>
-					</Link>
-				</Navbar.Brand>
+				<Link className='navbar__logo' to="/">
+					<img
+						src={Logo}
+						className="mr-3 h-6 sm:h-9"
+						alt="Logo"
+					/>
+					<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+						MAGIC BOOK
+					</span>
+				</Link>
 
 				<div className="flex md:order-2 gap-3">
 
@@ -41,27 +55,32 @@ const Navegacion = () => {
 					
 					<Navbar.Toggle />
 				</div>
+			<Navbar.Collapse>
 
 
-				<Navbar.Collapse>
-
-					<Navbar.Link active={location.pathname === '/libros'} >
-							<Link className='navbar__link' to="/libros">Libros</Link>
-						</Navbar.Link>
+					{/* <Link className='navbar__link' active={location.pathname === '/libros'} to="/libros">Libros</Link> */}
+					<NavLink className='navbar__link' /* activeClassName='navbar__link--active' */ to="/libros">Libros</NavLink>
 
 					
-					<Navbar.Link active={location.pathname === '/recientes'} >
+					{/* <Navbar.Link active={location.pathname === '/recientes'} >
 						<Link className='navbar__link' to="/recientes">Recientes</Link>
-					</Navbar.Link>
-					<Navbar.Link href="/navbars">
-						Vende
-					</Navbar.Link>
-					<Navbar.Link href="/navbars">
-						Contacto
-					</Navbar.Link>
-					<Navbar.Link href="/navbars">
-						Acerca de
-					</Navbar.Link>
+					</Navbar.Link> */}
+
+					<Dropdown className='navbar__link'
+							arrowIcon={false}
+							inline={true}
+							label="Generos"
+						> 
+						{generosUnicos.map((item) =>
+							
+							<Link to={`/libros/${item}`} key={item}>
+								<Dropdown.Item>
+									{item}
+								</Dropdown.Item>
+							</Link>
+						)}
+					</Dropdown>
+
 				</Navbar.Collapse>
 			</Navbar>
 

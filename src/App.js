@@ -15,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={ <Home /> }/>
                     <Route path="/libros" element={<ItemListContainer />} />
+                    <Route path="/libros/:genero" element={<ItemListContainer />} />
                     {/* <ItemListContainer/> */}
                 </Routes>
             <PiePagina/>
