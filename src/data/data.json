@@ -6,7 +6,7 @@
         "autor": "Gabriel García Márquez",
         "editorial": "Sudamericana",
         "anio": 1967,
-        "imagen": "./card/libro 1.jpg",
+        "imagen": "https://covers.alibrate.com/b/59872e8acba2bce50c1a6d96/b0bf30dd-8585-4a46-9229-c72a94282fbe/share",
         "calificacion": 5,
         "descripcion": "La novela cuenta la historia de la familia Buendía a lo largo de varias generaciones en el ficticio pueblo de Macondo.",
         "precio": 65000,
@@ -15,7 +15,7 @@
     {
         "id": 2,
         "titulo": "El aleph",
-        "genero": "cuento",
+        "genero": "Cuento",
         "autor": "Jorge Luis Borges",
         "editorial": "Losada",
         "anio": 1949,

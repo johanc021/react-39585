@@ -47,7 +47,7 @@ const ItemListContainer = () => {
 				if (!genero) {
 					setLibros(res)
 				} else {
-					{ loading && <Spinner /> }
+					/* { loading && <Spinner /> } */
 					setLibros(res.filter(libro => libro.genero === genero))
 				}
 			})

@@ -21,11 +21,8 @@ const Navegacion = () => {
 	},[])
 
 
-	// Generar generos sin repetir
-	const generosUnicos = [...new Set(libros.map((lib) => lib.genero))]
-
-	/* const urlMinuscula = generosUnicos.map((gen) => gen.toLowerCase())
-	console.log(urlMinuscula) */
+	// generar generos sin repetir
+	const generosUnicos = [...new Set(libros.map((lib) => lib.genero))].sort()
 
 	return (
 		<div className='header'>
@@ -69,7 +66,7 @@ const Navegacion = () => {
 					<Dropdown className='navbar__link'
 							arrowIcon={false}
 							inline={true}
-							label="Generos"
+							label="Géneros"
 						> 
 						{generosUnicos.map((item) =>
 							
