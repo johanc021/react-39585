@@ -39,33 +39,25 @@ const ItemListContainer = () => {
 	//posicion de libros en la paginacion
 	const librosPaginados = libros.slice(indexResultadoInicial, indexResultadoPasado);
 
-
-	/* function capitalizarPalabra(palabra) {
-		return palabra.charAt(0).toUpperCase() + palabra.slice(1);
-	} */
-
 	// captura de datos y llenado de datos en el estado Libros
 	useEffect(() => {
+		setLoading(true);
 		capturarDatos()
 			.then((res) => {
 				if (!genero) {
 					setLibros(res)
 				} else {
+					{ loading && <Spinner /> }
 					setLibros(res.filter(libro => libro.genero === genero))
 				}
 			})
-
-			
-			/* .then((res) =>{
-				setLibros(res)
-			}) */
 			.catch((err) => {
 				console.log(err)
 			})
 			.finally(() => {
 				setLoading(false)
 			})
-	}, [])
+	}, [genero])
 
 
 
