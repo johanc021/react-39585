@@ -8,7 +8,7 @@
         "anio": 1967,
         "imagen": "https://covers.alibrate.com/b/59872e8acba2bce50c1a6d96/b0bf30dd-8585-4a46-9229-c72a94282fbe/share",
         "calificacion": 5,
-        "descripcion": "La novela cuenta la historia de la familia Buendía a lo largo de varias generaciones en el ficticio pueblo de Macondo.",
+        "descripcion": "Es una épica novela que sigue la historia de la familia Buendía en el pueblo ficticio de Macondo. La obra maestra de Gabriel García Márquez explora temas como la soledad, la mortalidad y el amor a través de personajes fascinantes y una trama que combina realidad y fantasía.",
         "precio": 65000,
         "stock": 25
     },
@@ -20,7 +20,7 @@
         "editorial": "Losada",
         "anio": 1949,
         "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/78/8f/788f1c87e9e3cbfd648353112dcbbbbf.jpg",
-        "calificacion": 4,
+        "calificacion": 3,
         "descripcion": "El cuento narra la experiencia mística de un hombre que es capaz de ver simultáneamente todas las cosas del universo en un punto.",
         "precio": 35000,
         "stock": 25
@@ -33,7 +33,7 @@
         "editorial": "Debolsillo",
         "anio": 1949,
         "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/10/42/10426f9e9ae4f7cd9eb5d33cef5aa143.jpg",
-        "calificacion": 4.5,
+        "calificacion": 4,
         "descripcion": "La novela presenta una sociedad totalitaria en la que el gobierno controla todos los aspectos de la vida de las personas y donde la libertad individual es inexistente.",
         "precio": 37000,
         "stock": 25
@@ -46,7 +46,7 @@
         "editorial": "Alianza Editorial",
         "anio": 1915,
         "imagen": "https://www.edebe.com/publicaciones-generales/img_server.aspx?img=128477(1).jpg&tipo=F",
-        "calificacion": 4,
+        "calificacion": 2,
         "descripcion": "El cuento cuenta la historia de Gregor Samsa, quien se despierta un día convertido en un insecto y tiene que lidiar con su nueva situación.",
         "precio": 1800,
         "stock": 25
@@ -59,7 +59,7 @@
         "editorial": "Penguin Clásicos",
         "anio": -800,
         "imagen": "https://www.elejandria.com/covers/La_Iliada-Homero-lg.png",
-        "calificacion": 4.5,
+        "calificacion": 3,
         "descripcion": "La epopeya narra la historia de la Guerra de Troya y se centra en el héroe Aquiles y sus hazañas en el campo de batalla.",
         "precio": 43000,
         "stock": 25
@@ -72,7 +72,7 @@
         "editorial": "Debolsillo",
         "anio": 1925,
         "imagen": "https://www.nuevetrescuartos.com/imagenes/9789589/978958901664.GIF",
-        "calificacion": 4,
+        "calificacion": 2,
         "descripcion": "La novela sigue la vida del misterioso millonario Jay Gatsby y su obsesión por recuperar a su amor de juventud, Daisy Buchanan.",
         "precio": 22000,
         "stock": 25
@@ -85,7 +85,7 @@
         "editorial": "Alianza Editorial",
         "anio": 1813,
         "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/69/d4/69d4e28b6661d6b7ed6a53c1ba34eb33.jpg",
-        "calificacion": 4.5,
+        "calificacion": 3,
         "descripcion": "La novela sigue las vidas de las hermanas Bennet y sus intentos de encontrar un marido adecuado en la Inglaterra del siglo XIX.",
         "precio": 27000,
         "stock": 25
@@ -98,7 +98,7 @@
         "editorial": "Minotauro",
         "anio": 1962,
         "imagen": "https://trabalibros.com/rs/266/4886d523-1977-4fa1-ab24-df1b609c897c/64d/filename/la-naranja-mecanica-anthony-burgess-trabalibros.jpg",
-        "calificacion": 4,
+        "calificacion": 2,
         "descripcion": "La novela sigue las aventuras de Alex, un joven delincuente que es sometido a un tratamiento experimental para eliminar su comportamiento violento.",
         "precio": 19300,
         "stock": 25
@@ -111,7 +111,7 @@
         "editorial": "Molino",
         "anio": 2008,
         "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/11/12/1112d0a74ef4e62feca66a7b9dfdd67f.jpg",
-        "calificacion": 4.5,
+        "calificacion": 5,
         "descripcion": "La novela se desarrolla en un futuro distópico en el que el gobierno organiza un reality show anual en el que jóvenes de diferentes distritos deben luchar a muerte hasta que solo quede uno en pie.",
         "precio": 14600,
         "stock": 25
@@ -137,7 +137,7 @@
         "editorial": "Planeta",
         "anio": 2015,
         "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/a9/dd/a9dd9755bde59005eb4421bb1f061bcc.jpg",
-        "calificacion": 4,
+        "calificacion": 3,
         "descripcion": "La novela sigue la vida de Rachel, una mujer que toma el mismo tren todos los días y se obsesiona con una pareja que ve a través de la ventana. Un día, la mujer desaparece y Rachel se involucra en la investigación.",
         "precio": 11200,
         "stock": 25
@@ -150,7 +150,7 @@
         "editorial": "Seix Barral",
         "anio": 1963,
         "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/04/97/0497843aaba916128e3617a02b9a7583.jpg",
-        "calificacion": 4,
+        "calificacion": 1,
         "descripcion": "La novela sigue la vida de un grupo de jóvenes en un colegio militar en Lima, Perú, y los problemas y conflictos que enfrentan.",
         "precio": 16400,
         "stock": 25
@@ -163,7 +163,7 @@
         "editorial": "Debolsillo",
         "anio": 2007,
         "imagen": "https://m.media-amazon.com/images/I/7125ljaY0gL.jpg",
-        "calificacion": 4.5,
+        "calificacion": 3,
         "descripcion": "La novela sigue la vida de Kvothe, un mago y músico legendario que narra su historia a un cronista.",
         "precio": 17500,
         "stock": 25
@@ -176,7 +176,7 @@
         "editorial": "Plaza & Janés",
         "anio": 1982,
         "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/bf/b2/bfb2294d8912bbd5179452432aaceb15.jpg",
-        "calificacion": 4.5,
+        "calificacion": 4,
         "descripcion": "La novela cuenta la historia de la familia Trueba en un país ficticio de América Latina a lo largo de varias generaciones. Es una obra maestra del realismo mágico.",
         "precio": 47000,
         "stock": 25
@@ -202,7 +202,7 @@
         "editorial": "Umbriel",
         "anio": 2003,
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_676829-MCO53044235194_122022-O.jpg",
-        "calificacion": 3.5,
+        "calificacion": 4,
         "descripcion": "La novela sigue al profesor Robert Langdon y a la criptóloga francesa Sophie Neveu mientras investigan un asesinato en el Museo del Louvre y descubren una conspiración religiosa.",
         "precio": 32900,
         "stock": 25
@@ -215,7 +215,7 @@
         "editorial": "Planeta",
         "anio": 2001,
         "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/30/57/3057e792c1953b16740975d6fa56664f.jpg",
-        "calificacion": 4.5,
+        "calificacion": 3,
         "descripcion": "La novela sigue la vida de un joven llamado Daniel mientras investiga la vida del autor de un libro que ha encontrado y se ve envuelto en una trama de misterio y peligro.",
         "precio": 16100,
         "stock": 25
@@ -228,7 +228,7 @@
         "editorial": "Salamandra",
         "anio": 1960,
         "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/1b/d7/1bd7b432c94ccdcf816c917d8abe8e83.jpg",
-        "calificacion": 4.5,
+        "calificacion": 5,
         "descripcion": "La novela sigue la vida de una niña llamada Scout y su hermano Jem mientras su padre, un abogado, defiende a un hombre negro acusado de violación en un pueblo racista del sur de Estados Unidos. La obra aborda temas como la justicia, la moral y la discriminación racial.",
         "precio": 90000,
         "stock": 25

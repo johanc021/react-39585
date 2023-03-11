@@ -2,7 +2,7 @@
 import React from 'react';
 import './ItemListContainer.scss'
 import { useState, useEffect } from 'react'
-import { capturarDatos } from '../../helpers/capturarDatos'
+import { capturarDatos, pedirLibrosPorId } from '../../helpers/capturarDatos'
 import ItemList from '../ItemList/ItemList';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import Spinner from "../Spinner/Spinner";
@@ -17,10 +17,9 @@ const ItemListContainer = () => {
 	//Estado Spinner
 	const [loading, setLoading] = useState(true);
 
-	//Parametros de ruta
+	//Parametros de ruta por genero
 	const { genero } = useParams()
-	/* console.log(genero) */
-	
+
 	//estado de paginas
 	const [siguientePagina, setSiguientePagina] = useState(1);
 	
@@ -44,11 +43,13 @@ const ItemListContainer = () => {
 		setLoading(true);
 		capturarDatos()
 			.then((res) => {
-				if (!genero) {
-					setLibros(res)
-				} else {
-					/* { loading && <Spinner /> } */
-					setLibros(res.filter(libro => libro.genero === genero))
+				if (genero) {
+
+					/* setLibros(generosFiltro(genero)) */
+					const filtrarLibros = res.filter(libro => libro.genero === genero)
+					setLibros(filtrarLibros);
+				}  else {
+					setLibros(res);
 				}
 			})
 			.catch((err) => {
@@ -59,7 +60,7 @@ const ItemListContainer = () => {
 			})
 	}, [genero])
 
-
+	
 
 	return (
 		
@@ -71,7 +72,7 @@ const ItemListContainer = () => {
 						? {/* <NoProducts /> */}
 						: (
 							<>
-								<ItemList librosPaginados={librosPaginados} />
+								<ItemList librosPaginados={librosPaginados}/>
 
 								<div className='main__paginacion gap-4'>
 

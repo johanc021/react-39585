@@ -1,8 +1,8 @@
-import './BookCard.scss'
-import ItemDetail from '../ItemDetail/ItemDetail';
+import './ItemBookCard.scss'
+import { Link, useParams } from 'react-router-dom';
 
 
-function BookCard({ titulo, imagen, genero, autor, editorial, anio, precio, descripcion }) {
+function ItemBookCard({ id, titulo, imagen, genero, autor, editorial, anio, precio, descripcion }) {
 
 	const formatoPrecio = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits:0 }).format(precio)
 
@@ -19,23 +19,14 @@ function BookCard({ titulo, imagen, genero, autor, editorial, anio, precio, desc
 				<h4>Año: <strong>{anio}</strong></h4>
 				<h4>Autor: <strong>{autor}</strong></h4>
 				<h4>Precio: <strong>{formatoPrecio}</strong></h4>
+				
+				
 				<div className="link">
-
-					{/* Componente ItemDetail */}
-					<ItemDetail 
-						tituloLibro={titulo.toUpperCase()}
-						imagenLibro={imagen}
-						autorLibro={autor}
-						editorialLibro={editorial}
-						anioLibro={anio}
-						precioLibro={precio} 
-						descripcionLibro={descripcion}
-					/>
-
+					<Link className='link__btn' to={`/detail/${id}`}>Mas detalles</Link>
 				</div>
 			</div>
 		</div>
 	);
 }
 
-export default BookCard
+export default ItemBookCard

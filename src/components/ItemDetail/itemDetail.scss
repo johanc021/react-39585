@@ -1,0 +1,22 @@
+.detalleLibro {
+    background-color: #fff; 
+    border-radius: 5px; 
+    margin: 15px; 
+    padding: 20px;
+
+    &__containerTitulo {
+        margin: 10px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    &__img {
+        width: 250px;
+        height: 300px;
+    }
+    
+    &__containerLibro {
+        margin: 20px;
+        padding: 10px;
+    }
+}

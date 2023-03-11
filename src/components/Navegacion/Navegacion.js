@@ -5,7 +5,7 @@ import Logo from '../../Logo.svg';
 import CartWidget from '../CartWidget/CartWidget';
 import UserWidget from '../UserWidget/UserWidget';
 import { Link, useLocation, NavLink } from 'react-router-dom';
-import { generos } from '../../helpers/capturarDatos'
+import { generosMenu } from '../../helpers/capturarDatos'
 
 const Navegacion = () => {
 
@@ -14,7 +14,7 @@ const Navegacion = () => {
 	const [libros, setLibros] = useState([]);
 
 	useEffect(() => {
-		generos()
+		generosMenu()
 		.then((res)=>{
 			setLibros(res)
 		})

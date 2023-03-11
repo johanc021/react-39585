@@ -1,4 +1,4 @@
-import BookCard from '../BookCard/BookCard';
+import ItemBookCard from '../ItemBookCard/ItemBookCard';
 import { TextInput } from 'flowbite-react';
 import './ItemList.scss'
 
@@ -30,7 +30,7 @@ const ItemList = ({librosPaginados}) => {
 					
 					{
 						librosPaginados.map(libro => (
-							<BookCard
+							<ItemBookCard
 								key={libro.id}
 								{...libro}
 							/>
