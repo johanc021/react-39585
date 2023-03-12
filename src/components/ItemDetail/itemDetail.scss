@@ -20,3 +20,18 @@
         padding: 10px;
     }
 }
+
+.link-btn {
+    background-color: rgba(14, 174, 87, 1); 
+    color: #FFFFFF;
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo al pasar el puntero */
+.link-btn:hover {
+    background-color: #0D47A1; 
+    color: #FFC107;
+}

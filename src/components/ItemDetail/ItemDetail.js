@@ -1,13 +1,20 @@
-import { Button } from 'flowbite-react';
 import React from 'react';
+import { Button } from 'flowbite-react';
 import RatingBook from '../RatingBook/RatingBook';
 
 import './itemDetail.scss'
+import { Link, useNavigate } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
 
+	const navegacion = useNavigate()
+
 	const handleComprar = () => {
 		console.log("comprando")
+	}
+
+	const handleAtras = () => {
+		navegacion(-1)
 	}
 
 	return (
@@ -29,9 +36,11 @@ const ItemDetail = ({ item }) => {
 						{item.descripcion}
 					</p>
 
-					<Button className='mx-auto' onClick={handleComprar}>
-						Comprar
-					</Button>
+					<div className='flex'>
+						<Link className='mx-auto link-btn' onClick={handleComprar}>Comprar</Link>
+						<Link className='mx-auto link-btn' onClick={handleAtras}>Atrás</Link>
+					</div>
+
 				</div>
 			</div>
 
