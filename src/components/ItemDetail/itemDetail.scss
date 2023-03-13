@@ -35,3 +35,11 @@
     background-color: rgba(12,116,117,1); 
     color: #FFC107;
 }
+
+.btnAtras {
+    color: rgba(12,116,117,1);
+
+    &:hover {
+        color: rgba(14, 174, 87, 1);
+    }
+}

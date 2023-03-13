@@ -58,7 +58,16 @@
             justify-content: center;
             align-items: center;
 
-            & a:hover {
+            & .link__btn {
+                padding: 0px;
+                margin: 15px;
+                background-color: transparent;
+                border-radius: 15px;
+                border: transparent;
+                color: #f3f3f3;
+            }
+
+            & .link__btn:hover {
                 font-weight: bold;
                 color: #ae3a3a;
             }
