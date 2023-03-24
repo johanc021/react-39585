@@ -1,4 +1,3 @@
-import { Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { pedirLibrosPorId } from '../../helpers/capturarDatos';
@@ -28,7 +27,7 @@ const ItemDetailContainer = () => {
 			setLoading(false);
 		}
 		)
-	},[])
+	},[libroId])
 
 
 	/* console.log(item) */

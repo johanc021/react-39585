@@ -1,8 +1,7 @@
 
-import React from 'react';
 import './ItemListContainer.scss'
 import { useState, useEffect } from 'react'
-import { capturarDatos, pedirLibrosPorId } from '../../helpers/capturarDatos'
+import { capturarDatos } from '../../helpers/capturarDatos'
 import ItemList from '../ItemList/ItemList';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import Spinner from "../Spinner/Spinner";
@@ -10,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 
 const ItemListContainer = () => {
-	
+
 	// estado delibros
 	const [libros, setLibros] = useState([]);
 

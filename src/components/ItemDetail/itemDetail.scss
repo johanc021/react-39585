@@ -43,3 +43,14 @@
         color: rgba(14, 174, 87, 1);
     }
 }
+
+
+@media (max-width: 800px) {
+  .media {
+    display: block;
+  }
+  
+  .img {
+    margin: 0 auto;
+  }
+}

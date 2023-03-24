@@ -9,8 +9,7 @@ import { generosMenu } from '../../helpers/capturarDatos'
 
 const Navegacion = () => {
 
-	const location = useLocation();
-	
+
 	const [libros, setLibros] = useState([]);
 
 	useEffect(() => {
@@ -86,3 +85,5 @@ const Navegacion = () => {
 };
 
 export default Navegacion;
+
+

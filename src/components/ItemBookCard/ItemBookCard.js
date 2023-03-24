@@ -1,8 +1,8 @@
 import './ItemBookCard.scss'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-function ItemBookCard({ id, titulo, imagen, genero, autor, editorial, anio, precio, descripcion }) {
+function ItemBookCard({ id, titulo, imagen, genero, autor, editorial, anio, precio }) {
 
 	const formatoPrecio = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits:0 }).format(precio)
 
