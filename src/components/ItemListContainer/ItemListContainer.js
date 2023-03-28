@@ -1,7 +1,7 @@
 
 import './ItemListContainer.scss'
 import { useState, useEffect } from 'react'
-import { capturarDatos } from '../../helpers/capturarDatos'
+import { buscarLibrosFB, capturarDatosFB } from '../../helpers/capturarDatos'
 import ItemList from '../ItemList/ItemList';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import Spinner from "../Spinner/Spinner";
@@ -37,16 +37,19 @@ const ItemListContainer = () => {
 	//posicion de libros en la paginacion
 	const librosPaginados = libros.slice(indexResultadoInicial, indexResultadoPasado);
 
+
 	// captura de datos y llenado de datos en el estado Libros
-	useEffect(() => {
+	/* useEffect(() => {
 		setLoading(true);
-		capturarDatos()
+
+		capturarDatosFB()
 			.then((res) => {
 				if (genero) {
-
-					/* setLibros(generosFiltro(genero)) */
-					const filtrarLibros = res.filter(libro => libro.genero === genero)
-					setLibros(filtrarLibros);
+					
+					buscarLibrosFB(genero)
+						.then((res) =>	{
+							setLibros(res)
+						})
 				}  else {
 					setLibros(res);
 				}
@@ -57,7 +60,16 @@ const ItemListContainer = () => {
 			.finally(() => {
 				setLoading(false)
 			})
-	}, [genero])
+	}, [genero]) */
+
+	useEffect(() => {
+		setLoading(true);
+		capturarDatosFB()
+			.then(res => (genero && buscarLibrosFB(genero)) || res)
+			.then(setLibros)
+			.catch(console.log)
+			.finally(() => setLoading(false));
+	}, [genero]);
 
 	
 
@@ -68,7 +80,7 @@ const ItemListContainer = () => {
 				loading
 					? <Spinner />
 					: libros.length === 0
-						? {/* <NoProducts /> */}
+						? <div>no hay productos</div>
 						: (
 							<>
 								<ItemList librosPaginados={librosPaginados}/>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { pedirLibrosPorId } from '../../helpers/capturarDatos';
+import { pedirLibrosPorIdFB } from '../../helpers/capturarDatos';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import Spinner from '../../components/Spinner/Spinner'
 import './ItemDetailContainer.scss'
@@ -19,13 +19,14 @@ const ItemDetailContainer = () => {
 	useEffect(() => {
 		setLoading(true);
 		
-		pedirLibrosPorId(Number(libroId))
-		.then(res => {
-			setItem(res)
-		})
+		
+		pedirLibrosPorIdFB(libroId)
+			.then(res => {
+				setItem(res)
+			})
 		.finally(() =>{
 			setLoading(false);
-		}
+			}
 		)
 	},[libroId])
 

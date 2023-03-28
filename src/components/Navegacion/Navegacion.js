@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Logo from '../../Logo.svg';
 import CartWidget from '../CartWidget/CartWidget';
 import UserWidget from '../UserWidget/UserWidget';
-import { Link, useLocation, NavLink } from 'react-router-dom';
-import { generosMenu } from '../../helpers/capturarDatos'
+import { Link,NavLink } from 'react-router-dom';
+import { capturarDatosFB} from '../../helpers/capturarDatos'
 
 const Navegacion = () => {
 
@@ -13,7 +13,7 @@ const Navegacion = () => {
 	const [libros, setLibros] = useState([]);
 
 	useEffect(() => {
-		generosMenu()
+		capturarDatosFB()
 		.then((res)=>{
 			setLibros(res)
 		})
@@ -53,14 +53,7 @@ const Navegacion = () => {
 				</div>
 			<Navbar.Collapse>
 
-
-					{/* <Link className='navbar__link' active={location.pathname === '/libros'} to="/libros">Libros</Link> */}
 					<NavLink className='navbar__link' /* activeClassName='navbar__link--active' */ to="/libros">Libros</NavLink>
-
-					
-					{/* <Navbar.Link active={location.pathname === '/recientes'} >
-						<Link className='navbar__link' to="/recientes">Recientes</Link>
-					</Navbar.Link> */}
 
 					<Dropdown className='navbar__link'
 							arrowIcon={false}

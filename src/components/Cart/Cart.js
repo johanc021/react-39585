@@ -22,7 +22,7 @@ const Cart = () => {
 
 	if (cart.length === 0){
 		return (
-			<div className='main bg-transparent'>
+			<div className=' main carritoContainer bg-transparent'>
 				<div className='container mx-auto flex flex-col justify-center items-center bg-white h-96 rounded-md gap-4'>
 					<span className='text-7xl text-center container__span '>NO HAY LIBROS EN EL CARRITO</span>
 					<Link className=' p-2 bg-verde text-white rounded-md' to="/libros">Vea nuestros libros</Link>
@@ -78,7 +78,7 @@ const Cart = () => {
 					<strong>Total Compra: </strong> {formatoPrecio(totalCompra())}
 				</span>
 				<div className='flex gap-2'>
-					<Link className='p-2 rounded-md bg-white w-40 text-center border border-white hover:bg-green-500 hover:text-white'>
+					<Link className='p-2 rounded-md bg-white w-40 text-center border border-white hover:bg-green-500 hover:text-white' to={"/checkout"}>
 						Finalizar compra
 					</Link>
 					<Link className='p-2 rounded-md bg-white w-40 text-center border border-white hover:bg-red-600 hover:text-white' onClick={vaciarCarrito}>

@@ -1,7 +1,19 @@
 
-/* .carritoContainer {
-    height: 500px;
-} */
+.carritoContainer {
+    min-height: 590px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    /* min-height: 585px;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+
+
 
 /* .carritoImg {
     width: 310px;
