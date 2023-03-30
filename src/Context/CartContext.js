@@ -1,7 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext()
 
+//cargue en localstorage - inicie en estado carrito
+/* const init = JSON.parse(localStorage.getItem('carrito')) || [] */
 
 export const CartProvider = ( { children } ) => {
 
@@ -19,8 +21,20 @@ export const CartProvider = ( { children } ) => {
         return cart.reduce((total, libro) => total + libro.cantidad, 0);
     }
 
-    const totalCompra = () => {
+    const subTotal = () => {
         return cart.reduce((total, libro) => total + libro.precio * libro.cantidad, 0);
+    }
+
+    const iva = () => {
+        return subTotal() * 0.19
+    }
+
+    const envio = () => {
+        return 15000
+    }
+
+    const totalCompra = () => {
+        return subTotal() + iva() + envio()
     }
 
     const vaciarCarrito = () => {
@@ -31,6 +45,12 @@ export const CartProvider = ( { children } ) => {
         setCart(cart.filter((libro) => libro.id !== id))
     }
 
+    //useEffect para actualizar local storage de acuerdo a eliminaciones o cargues en el carrito
+    /* useEffect(() => {
+        localStorage.setItem('carrito', JSON.stringify(cart))
+    },[cart]) */
+
+
     return (
         <CartContext.Provider value={{
             cart,
@@ -38,7 +58,10 @@ export const CartProvider = ( { children } ) => {
             agregarCarrito,
             estaEnCarrito,
             cantidadLibros,
+            iva,
+            subTotal,
             totalCompra,
+            envio,
             vaciarCarrito,
             eliminarLibro
         }}>

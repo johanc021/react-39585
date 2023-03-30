@@ -1,10 +1,10 @@
-import './ItemBookCard.scss'
 import { Link } from 'react-router-dom';
+import { formatoPrecio } from '../../helpers/formatoPrecio'
+import { MdFavorite } from 'react-icons/md'
+import './ItemBookCard.scss'
 
 
 function ItemBookCard({ id, titulo, imagen, genero, autor, editorial, anio, precio }) {
-
-	const formatoPrecio = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits:0 }).format(precio)
 
 	return (
 		<div className="card">
@@ -13,12 +13,15 @@ function ItemBookCard({ id, titulo, imagen, genero, autor, editorial, anio, prec
 				<h5>{genero.toUpperCase()}</h5>
 			</div>
 			<div className="face back">
+				<button className="favorite-btn absolute top-0 right-0 m-4">
+					<MdFavorite />
+				</button>
 				<h4><strong>{titulo.toUpperCase()}</strong></h4>
 				<h4>Genero: <strong>{genero}</strong></h4>
 				<h4>Editorial: <strong>{editorial}</strong></h4>
 				<h4>Año: <strong>{anio}</strong></h4>
 				<h4>Autor: <strong>{autor}</strong></h4>
-				<h4>Precio: <strong>{formatoPrecio}</strong></h4>
+				<h4>Precio: <strong>{formatoPrecio(precio)}</strong></h4>
 				
 				
 				<div className="link">

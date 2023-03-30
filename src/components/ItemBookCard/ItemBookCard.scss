@@ -71,23 +71,6 @@
                 font-weight: bold;
                 color: #ae3a3a;
             }
-
-            /* & a.link__btn {
-                padding: 0px;
-                margin: 15px;
-                background-color: transparent;
-                border-radius: 15px;
-                border: transparent;
-                color: #f3f3f3;
-            }
-
-            & a.link__btn:hover {
-                color: #000;
-                background-color: white;
-                border: white;
-            } */
-
-            
         }
 
         & h3 {
@@ -108,6 +91,20 @@
     &:hover .back {
         transform: perspective(600px) rotateY(360deg);
     }
+}
+
+
+.favorite-btn {
+	background-color: transparent;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	transition: color 0.2s ease-in-out;
+}
+
+.favorite-btn:hover {
+	color: red;
 }
 
 
