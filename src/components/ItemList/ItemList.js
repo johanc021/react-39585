@@ -32,7 +32,8 @@ const ItemList = ({librosPaginados}) => {
 						librosPaginados.map(libro => (
 							<ItemBookCard
 								key={libro.id}
-								{...libro}
+								/* {...libro} */
+								item = {libro}
 							/>
 						))
 					}

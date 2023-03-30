@@ -70,6 +70,8 @@ const Navegacion = () => {
 						)}
 					</Dropdown>
 
+					<NavLink className='navbar__link' to="/favoritos">Favoritos</NavLink>
+
 				</Navbar.Collapse>
 			</Navbar>
 
