@@ -5,7 +5,7 @@ import { formatoPrecio } from '../../helpers/formatoPrecio';
 import { metodosPago } from '../../helpers/metodoPago'
 import { Link, Navigate } from 'react-router-dom';
 import { db } from "../../firebase/config";
-import { collection, addDoc} from 'firebase/firestore';
+import { collection, addDoc, writeBatch} from 'firebase/firestore';
 import "./Chekout.scss"
 
 const Chekout = () => {
