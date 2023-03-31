@@ -5,6 +5,8 @@ import './itemDetail.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../Context/CartContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ItemDetail = ({ item }) => {
 
@@ -13,6 +15,17 @@ const ItemDetail = ({ item }) => {
 	const [cantidad, setCantidad] = useState(1);
 
 	const navegacion = useNavigate()
+
+	const notifySuccess = () => toast.success('Producto agregado al carrito!', {
+		position: "bottom-right",
+		autoClose: 3000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "light",
+	});
 
 	const handleAtras = () => {
 		navegacion(-1)
@@ -24,9 +37,14 @@ const ItemDetail = ({ item }) => {
 			cantidad
 		}
 		agregarCarrito(libroEnCarrito)
+		notifySuccess()
+		
 	}
 
+
+
 	return (
+		
 		<div className="space-y-2  bg-white detalleLibro">
 
 				<div className=' detalleLibro__containerTitulo flex justify-between'>
@@ -47,9 +65,12 @@ const ItemDetail = ({ item }) => {
 							{item.descripcion}
 						</p>
 						{
-							item.stock <= 5 
-							? <span><strong>Hay solo {item.stock} {item.stock === 1 ? 'unidad' : 'unidades'}</strong></span>
-								: <span>Stock en tienda: {item.stock}</span>
+							item.stock <= 0
+								? <span className='text-xl text-red-600'><strong>Sin stock</strong></span>
+								: item.stock <= 5
+									? <span><strong>Hay {item.stock} {item.stock === 1 ? 'unidad' : 'unidades'}</strong></span>
+									: <span>Stock en tienda: {item.stock}</span>
+
 						}
 
 						{
@@ -59,18 +80,36 @@ const ItemDetail = ({ item }) => {
 									<Link to="/cart" className='link-btn text-center mx-auto'>ir al Carrito</Link>
 								</div>
 								
-							: <ItemCount
-								stockMax={item.stock}
-								cantidad={cantidad}
-								setCantidad={setCantidad}
-								handleAgregar={handleAgregar}
-								id={item.id}
-							/>
+							:	item.stock === 0
+									? <div className='hidden'></div>
+									: <ItemCount
+										stockMax={item.stock}
+										cantidad={cantidad}
+										setCantidad={setCantidad}
+										handleAgregar={handleAgregar}
+										id={item.id}
+										estaEnCarrito={estaEnCarrito}
+									/>
 						}					
 
 					</div>
 				</div>
 
+				{/* Toast de producto agregado */}		
+				<ToastContainer
+					position="top-right"
+					autoClose={3000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="light"
+				/>
+				{/* Same as */}
+				<ToastContainer />
 			</div>
 		
 	)

@@ -9,7 +9,7 @@ const FavoriteContainer = () => {
 
 	if (favoritos.length === 0) {
 		return (
-			<div className=' main carritoContainer bg-transparent'>
+			<div className='main bg-transparent'>
 				<div className='container mx-auto flex flex-col justify-center items-center bg-white h-96 rounded-md gap-4'>
 					<span className='text-7xl text-center container__span '>NO HAY FAVORITOS!...</span>
 					<Link className=' p-2 bg-verde text-white rounded-md' to="/libros">Vea nuestros libros</Link>

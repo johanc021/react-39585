@@ -11,7 +11,7 @@ const FavoriteItem = (favoritos) => {
 		<div className='main p-2'>
 			
 			<div className='flex gap-3 shadow-lg shadow-verde rounded-lg'>
-				<img className='p-5 w-96 h-72' src={favoritos.imagen}/>
+				<img className='p-5 w-96 h-72' src={favoritos.imagen} alt={favoritos.titulo}/>
 
 				<div className='flex flex-col justify-center p-5 text-lg'>
 					<h1 className='text-xl'><strong>{favoritos.titulo.toUpperCase()}</strong></h1>

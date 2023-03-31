@@ -5,10 +5,24 @@ import { formatoPrecio } from '../../helpers/formatoPrecio';
 import { metodosPago } from '../../helpers/metodoPago'
 import { Link, Navigate } from 'react-router-dom';
 import { db } from "../../firebase/config";
-import { collection, addDoc, writeBatch} from 'firebase/firestore';
+import { collection, addDoc, query, where, writeBatch, documentId, getDocs } from 'firebase/firestore';
+import { ToastContainer, toast } from 'react-toastify';
 import "./Chekout.scss"
+import 'react-toastify/dist/ReactToastify.css';
 
 const Chekout = () => {
+
+	const notify = () => 
+		toast.error('🦄 Wow... hubo un error, hay algun producto que no tiene stock disponible!', {
+		position: "top-right",
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "light",
+	});;
 
 	const { cart, subTotal, totalCompra, iva, envio, vaciarCarrito } = useContext(CartContext)
 
@@ -24,7 +38,7 @@ const Chekout = () => {
 		metodoPago: "",
 		numeroTarjeta: ""
 
-	})		
+	})
 
 	const handleInputChange = (e) => {
 		SetValues({
@@ -62,7 +76,7 @@ const Chekout = () => {
 		return errors;
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 
 		/* console.log("Submit", values) */
@@ -70,29 +84,60 @@ const Chekout = () => {
 		const errors = validarForm();
 		setFormErrors(errors);
 		if (Object.keys(errors).length === 0) {
-			
+
 			const orden = {
 				cliente: values,
-				items: cart.map((lib) => ({ id: lib.id, precio: lib.precio, cantidad: lib.cantidad, titulo: lib.titulo})),
+				items: cart.map((lib) => ({ id: lib.id, precio: lib.precio, cantidad: lib.cantidad, titulo: lib.titulo })),
 				total: totalCompra(),
 				fecha: new Date()
 			}
 
 			/* console.log(orden) */
 
-			const ordenRed = collection(db, "orders")
+			const batch = writeBatch(db)
+			const ordenRef = collection(db, "orders")
+			const librosRef = collection(db, "books")
 
-			addDoc(ordenRed, orden)
-				.then((doc) => {
-					setOrderId(doc.id)
-					vaciarCarrito()
-				})
+			const outOfStock = []
+
+			const itemsRef = query(librosRef, where(documentId(), 'in', cart.map(lib => lib.id)))
+
+			const response = await getDocs(itemsRef)
+
+			response.docs.forEach((doc) => {
+				const item = cart.find(lib => lib.id === doc.id)
+
+				if (doc.data().stock >= item.cantidad) {
+					batch.update(doc.ref, {
+						stock: doc.data().stock - item.cantidad
+					})
+				} else {
+					outOfStock.push(item)
+				}
+			})
+
+			if (outOfStock.length === 0) {
+				await batch.commit()
+
+				addDoc(ordenRef, orden)
+					.then((doc) => {
+						setOrderId(doc.id)
+						vaciarCarrito()
+					})
+			}else {
+				/* alert("Hay Items sin stock") */
+				notify()
+			}
+			
+
+
+			
 		}
 
 
 	}
 
-	if(orderId){
+	if (orderId) {
 		return (
 			<div className='main'>
 				<div className='main__checkout flex mx-auto gap-3'>
@@ -104,9 +149,11 @@ const Chekout = () => {
 		)
 	}
 
-	if(cart.length === 0){
-		return <Navigate to="/"/>
+	if (cart.length === 0) {
+		return <Navigate to="/" />
 	}
+
+	
 
 	return (
 		<main className='main'>
@@ -114,7 +161,7 @@ const Chekout = () => {
 			<div className='main__formulario'>
 
 				<h1 className='main__title'>TERMINA TU COMPRA</h1>
-				
+
 				<div className='flex flex-row justify-center mt-5 p-1 gap-2 max-lg:flex-col max-lg:text-sm'>
 					<div className="detalleCompra w-3/5 flex justify-center p-5 shadow-lg bg-green-100 rounded-lg max-lg:w-full">
 						<table className="table-auto w-full rounded-lg border border-double">
@@ -137,8 +184,8 @@ const Chekout = () => {
 											<td className=" px-4 py-2">{formatoPrecio(lib.cantidad * lib.precio)}</td>
 										</tr>
 									)
-								)}
-								
+									)}
+
 							</tbody>
 							<tfoot >
 								<tr>
@@ -153,10 +200,10 @@ const Chekout = () => {
 								<tr>
 									<td colSpan="4" className=" px-4 py-2  text-right">Total: <strong>{formatoPrecio(totalCompra())}</strong></td>
 								</tr>
-								
+
 							</tfoot>
 						</table>
-						
+
 					</div>
 					<div className='datosCliente w-96 p-5 shadow-lg bg-green-100 rounded-lg max-lg:w-full'>
 						<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -164,7 +211,7 @@ const Chekout = () => {
 								<div className="mb-2 block">
 									<Label
 										htmlFor="nombre"
-										value={formErrors.nombre ? <div className="text-red-600 text-sm">{formErrors.nombre}</div>: "Nombre"}
+										value={formErrors.nombre ? <div className="text-red-600 text-sm">{formErrors.nombre}</div> : "Nombre"}
 									/>
 								</div>
 								<TextInput
@@ -175,7 +222,7 @@ const Chekout = () => {
 									type="text"
 									sizing="md"
 									placeholder="John Doe"
-									/* required={true} */
+								/* required={true} */
 								/>
 							</div>
 							<div>
@@ -193,7 +240,7 @@ const Chekout = () => {
 									type="text"
 									sizing="md"
 									placeholder="Cra 152 # 25- 30"
-									/* required={true} */
+								/* required={true} */
 								/>
 							</div>
 							<div>
@@ -211,7 +258,7 @@ const Chekout = () => {
 									type="text"
 									sizing="md"
 									placeholder="315658427"
-									/* required={true} */
+								/* required={true} */
 								/>
 							</div>
 							<div>
@@ -229,7 +276,7 @@ const Chekout = () => {
 									type="email"
 									sizing="md"
 									placeholder="admin@admin.com"
-									/* required={true} */
+								/* required={true} */
 								/>
 							</div>
 							<div id="select">
@@ -245,7 +292,7 @@ const Chekout = () => {
 									onChange={handleInputChange}
 									name="metodoPago"
 									sizing="md"
-									/* required={true} */
+								/* required={true} */
 								>
 									{metodosPago.map((metodo) => (
 										<option key={metodo.id} value={metodo.nombre}>
@@ -269,22 +316,35 @@ const Chekout = () => {
 									type="text"
 									sizing="md"
 									placeholder="5687-5654-6354-1487"
-									/* required={true} */
+								/* required={true} */
 								/>
 							</div>
 							<Button className='bg-green-500' type="submit" /* disabled={Object.keys(errors).length === 0 ? false : true} */>
 								PAGAR
 							</Button>
+							<ToastContainer
+								position="top-right"
+								autoClose={5000}
+								hideProgressBar={false}
+								newestOnTop={false}
+								closeOnClick
+								rtl={false}
+								pauseOnFocusLoss
+								draggable
+								pauseOnHover
+								theme="light"
+							/>
+							<ToastContainer />
 						</form>
 					</div>
 				</div>
-				
+
 			</div>
 		</main>
 	)
-	
-	
-	
+
+
+
 };
 
 export default Chekout;

@@ -5,9 +5,6 @@ import { formatoPrecio } from '../../helpers/formatoPrecio'
 import { BsTrash } from 'react-icons/bs'
 import './Cart.scss'
 
-
-
-
 const Cart = () => {
 
 	
@@ -52,7 +49,7 @@ const Cart = () => {
 									<h2 className='text-lg font-semibold'><strong>{lib.titulo}</strong></h2>
 									<p className='my-2'>Stock en tienda: {lib.stock}</p>
 									<p className='my-2'>Valor Unitario: {formatoPrecio(lib.precio)}</p>
-									<p className='my-2'>Cantidad : {lib.cantidad}</p>
+									<p className='my-2'>Cantidad: {lib.cantidad}</p>
 									<p className='my-2'>
 										Precio total: {formatoPrecio(totalProducto(lib.precio, lib.cantidad))}
 									</p>

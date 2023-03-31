@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const CartContext = createContext()
 
@@ -45,6 +45,17 @@ export const CartProvider = ( { children } ) => {
         setCart(cart.filter((libro) => libro.id !== id))
     }
 
+    const actualizarCantidad = (id, cantidad) => {
+        setCart(
+            cart.map((libro) => {
+                if (libro.id === id) {
+                    return { ...libro, cantidad };
+                }
+                return libro;
+            })
+        );
+    };
+
     //useEffect para actualizar local storage de acuerdo a eliminaciones o cargues en el carrito
     /* useEffect(() => {
         localStorage.setItem('carrito', JSON.stringify(cart))
@@ -63,7 +74,8 @@ export const CartProvider = ( { children } ) => {
             totalCompra,
             envio,
             vaciarCarrito,
-            eliminarLibro
+            eliminarLibro,
+            actualizarCantidad
         }}>
             {children}
         </CartContext.Provider>

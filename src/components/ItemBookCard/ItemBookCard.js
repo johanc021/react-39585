@@ -26,6 +26,7 @@ function ItemBookCard({ item }) {
 							quitarFavorito(item);
 						} else {
 							agregarFavorito(item);
+							
 						}
 					}}
 				>
