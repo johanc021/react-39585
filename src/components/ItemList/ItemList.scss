@@ -24,9 +24,37 @@
         margin-left: 20px;  
 
     }
+
+
+    &__paginacion {
+    /* background-color: blue; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & span {
+        color: rgb(1, 1, 1);
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    & button {
+        font-size: 32px;
+        color: rgb(3, 2, 2);
+
+        &:hover{
+            color: #60a4ff;
+        }
+    }
+
+
 }
 
- .section__libros {
+
+}
+
+.section__libros {
         max-width: 1300px;
         min-height: 435px;
         margin: 15px auto;

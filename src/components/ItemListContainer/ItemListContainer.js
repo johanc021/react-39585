@@ -3,7 +3,6 @@ import './ItemListContainer.scss'
 import { useState, useEffect } from 'react'
 import { buscarLibrosFB, capturarDatosFB } from '../../helpers/capturarDatos'
 import ItemList from '../ItemList/ItemList';
-import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import Spinner from "../Spinner/Spinner";
 import { useParams } from 'react-router-dom';
 
@@ -21,46 +20,22 @@ const ItemListContainer = () => {
 
 	//estado de paginas
 	const [siguientePagina, setSiguientePagina] = useState(1);
-	
+
 	//numero de libros por pagina
 	const resultadoPagina = 10
-	
+
 	//Index de paginacion anterior
 	const indexResultadoPasado = siguientePagina * resultadoPagina;
-	
+
 	//Index de paginacion inicial
 	const indexResultadoInicial = indexResultadoPasado - resultadoPagina;
-	
+
 	//calculo de total de paginas
 	const totalPaginas = Math.ceil(libros.length / resultadoPagina);
 
 	//posicion de libros en la paginacion
 	const librosPaginados = libros.slice(indexResultadoInicial, indexResultadoPasado);
 
-
-	// captura de datos y llenado de datos en el estado Libros
-	/* useEffect(() => {
-		setLoading(true);
-
-		capturarDatosFB()
-			.then((res) => {
-				if (genero) {
-					
-					buscarLibrosFB(genero)
-						.then((res) =>	{
-							setLibros(res)
-						})
-				}  else {
-					setLibros(res);
-				}
-			})
-			.catch((err) => {
-				console.log(err)
-			})
-			.finally(() => {
-				setLoading(false)
-			})
-	}, [genero]) */
 
 	useEffect(() => {
 		setLoading(true);
@@ -71,10 +46,10 @@ const ItemListContainer = () => {
 			.finally(() => setLoading(false));
 	}, [genero]);
 
-	
+
 
 	return (
-		
+
 		<>
 			{
 				loading
@@ -83,19 +58,17 @@ const ItemListContainer = () => {
 						? <div>no hay productos</div>
 						: (
 							<>
-								<ItemList librosPaginados={librosPaginados}/>
+								<ItemList
+									librosPaginados={librosPaginados}
+									libros={libros}
+									siguientePagina={siguientePagina}
+									setSiguientePagina={setSiguientePagina}
+									totalPaginas={totalPaginas}
+								/>
 
-								<div className='main__paginacion gap-4'>
-
-									<button onClick={() => setSiguientePagina(siguientePagina - 1)} disabled={siguientePagina === 1}><AiOutlineDoubleLeft /></button>
-
-									<span>{siguientePagina + ' de ' + totalPaginas}</span>
-
-									<button onClick={() => setSiguientePagina(siguientePagina + 1)} disabled={siguientePagina === totalPaginas}><AiOutlineDoubleRight /></button>
-
-								</div>
+								
 							</>
-						) 
+						)
 			}
 		</>
 	);

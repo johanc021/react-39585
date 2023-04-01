@@ -1,25 +1,2 @@
-.main__paginacion {
-    /* background-color: blue; */
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    & span {
-        color: white;
-        font-size: 17px;
-        font-weight: bold;
-    }
-
-    & button {
-        font-size: 32px;
-        color: white;
-
-        &:hover{
-            color: #60a4ff;
-        }
-    }
-
-
-}
 

@@ -1,5 +1,5 @@
 import data from '../data/data.json'
-import { collection, getDocs, getDoc, doc, query, where, orderBy } from 'firebase/firestore'
+import { collection, getDocs, getDoc, doc, query, where } from 'firebase/firestore'
 import { db } from '../firebase/config'
 
 
@@ -69,7 +69,7 @@ export const buscarLibrosFB = (genero) => {
 };
 
 //consulta por parametro buscado en Input.
-const buscarLibrosInput = (busqueda) => {
+/* const buscarLibrosInput = (busqueda) => {
     return new Promise((resolve, reject) => {
         const dbRef = collection(db, orderBy("name", "asc"), "books");
         dbRef.orderByChild('titulo')
@@ -89,7 +89,7 @@ const buscarLibrosInput = (busqueda) => {
                 reject(error);
             });
     });
-};
+}; */
 
 
 
