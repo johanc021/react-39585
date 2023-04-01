@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import RatingBook from '../RatingBook/RatingBook';
 import { ImUndo2 } from "react-icons/im";
 import './itemDetail.scss'
@@ -7,6 +7,8 @@ import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../Context/CartContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ItemDetail = ({ item }) => {
 
@@ -38,19 +40,26 @@ const ItemDetail = ({ item }) => {
 		}
 		agregarCarrito(libroEnCarrito)
 		notifySuccess()
-		
+
 	}
+
+	useEffect(() => {
+		AOS.init({
+			duration: 1500,
+			once: true
+		});
+	}, []);
 
 
 
 	return (
-		
-		<div className="space-y-2  bg-white detalleLibro">
+		<div data-aos="zoom-in-right">
+			<div className="space-y-2  bg-white detalleLibro">
 
 				<div className=' detalleLibro__containerTitulo flex justify-between'>
 					<h1>Detalles del libro: {item.titulo} </h1>
 
-				<Link className='btnAtras' onClick={handleAtras}><ImUndo2 size={26}/></Link>
+					<Link className='btnAtras' onClick={handleAtras}><ImUndo2 size={26} /></Link>
 				</div>
 
 				<div className='media m-5 sm:block md:flex detalleLibro__containerLibro items-center '>
@@ -75,12 +84,12 @@ const ItemDetail = ({ item }) => {
 
 						{
 							estaEnCarrito(item.id)
-							
-							? 	<div>
+
+								? <div>
 									<Link to="/cart" className='link-btn text-center mx-auto'>ir al Carrito</Link>
 								</div>
-								
-							:	item.stock === 0
+
+								: item.stock === 0
 									? <div className='hidden'></div>
 									: <ItemCount
 										stockMax={item.stock}
@@ -90,12 +99,12 @@ const ItemDetail = ({ item }) => {
 										id={item.id}
 										estaEnCarrito={estaEnCarrito}
 									/>
-						}					
+						}
 
 					</div>
 				</div>
 
-				{/* Toast de producto agregado */}		
+				{/* Toast de producto agregado */}
 				<ToastContainer
 					position="top-right"
 					autoClose={3000}
@@ -111,7 +120,9 @@ const ItemDetail = ({ item }) => {
 				{/* Same as */}
 				<ToastContainer />
 			</div>
+		</div>
 		
+
 	)
 };
 

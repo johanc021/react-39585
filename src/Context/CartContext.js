@@ -45,6 +45,11 @@ export const CartProvider = ( { children } ) => {
         setCart(cart.filter((libro) => libro.id !== id))
     }
 
+    const obtenerCantidadPorId = (id) => {
+        const producto = cart.find((producto) => producto.id === id);
+        return producto ? producto.cantidad : 0;
+    }
+
     const actualizarCantidad = (id, cantidad) => {
         setCart(
             cart.map((libro) => {
@@ -75,6 +80,7 @@ export const CartProvider = ( { children } ) => {
             envio,
             vaciarCarrito,
             eliminarLibro,
+            obtenerCantidadPorId,
             actualizarCantidad
         }}>
             {children}

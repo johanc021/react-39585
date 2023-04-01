@@ -5,6 +5,8 @@ import { buscarLibrosFB, capturarDatosFB } from '../../helpers/capturarDatos'
 import ItemList from '../ItemList/ItemList';
 import Spinner from "../Spinner/Spinner";
 import { useParams } from 'react-router-dom';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const ItemListContainer = () => {
@@ -45,7 +47,13 @@ const ItemListContainer = () => {
 			.catch(console.log)
 			.finally(() => setLoading(false));
 	}, [genero]);
-
+	
+	useEffect(() => {
+		AOS.init({
+			duration: 1500,
+			once: true
+		});
+	}, []);
 
 
 	return (
@@ -58,14 +66,15 @@ const ItemListContainer = () => {
 						? <div>no hay productos</div>
 						: (
 							<>
-								<ItemList
-									librosPaginados={librosPaginados}
-									libros={libros}
-									siguientePagina={siguientePagina}
-									setSiguientePagina={setSiguientePagina}
-									totalPaginas={totalPaginas}
-								/>
-
+								<div data-aos="fade-up">
+									<ItemList
+										librosPaginados={librosPaginados}
+										libros={libros}
+										siguientePagina={siguientePagina}
+										setSiguientePagina={setSiguientePagina}
+										totalPaginas={totalPaginas}
+									/>
+								</div>
 								
 							</>
 						)
