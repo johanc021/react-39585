@@ -20,18 +20,18 @@ const PiePagina = () => {
 						</div>
 						<div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
 							<div>
-								<Footer.Title title="about" />
+								<Footer.Title title="acerca de" />
 								<Footer.LinkGroup col={true}>
 									<Footer.Link href="#">
-										Flowbite
+										Nosotros
 									</Footer.Link>
 									<Footer.Link href="#">
-										Tailwind CSS
+										Trabaja con nosotros
 									</Footer.Link>
 								</Footer.LinkGroup>
 							</div>
 							<div>
-								<Footer.Title title="Follow us" />
+								<Footer.Title title="encuentranos" />
 								<Footer.LinkGroup col={true}>
 									<Footer.Link href="#">
 										Github
@@ -42,13 +42,13 @@ const PiePagina = () => {
 								</Footer.LinkGroup>
 							</div>
 							<div>
-								<Footer.Title title="Legal" />
+								<Footer.Title title="ambito legal" />
 								<Footer.LinkGroup col={true}>
 									<Footer.Link href="#">
-										Privacy Policy
+										Politicas de privacidad
 									</Footer.Link>
 									<Footer.Link href="#">
-										Terms & Conditions
+										terminos y condiciones
 									</Footer.Link>
 								</Footer.LinkGroup>
 							</div>

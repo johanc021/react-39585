@@ -4,8 +4,9 @@ import { TextInput } from 'flowbite-react';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import './ItemList.scss'
 
+
 const ItemList = ({ librosPaginados, libros, setSiguientePagina, siguientePagina, totalPaginas }) => {
-	
+
 	const [busqueda, setBusqueda] = useState('');
 
 	const librosFiltrados = libros.filter(libro => {
@@ -19,6 +20,7 @@ const ItemList = ({ librosPaginados, libros, setSiguientePagina, siguientePagina
 	const librosAMostrar = busqueda.length > 0 ? librosFiltrados : librosPaginados;
 
 	return (
+
 		<main className='main'>
 			<div className='main__container'>
 				<h1 className='main__title'>NUESTRO CATALOGO</h1>
@@ -47,9 +49,9 @@ const ItemList = ({ librosPaginados, libros, setSiguientePagina, siguientePagina
 								item={libro}
 							/>
 						))
-						
+
 				}
-				
+
 			</section>
 
 			<div className={`main__paginacion gap-4 ${busqueda.length > 0 ? 'hidden' : 'visible'}`}>
@@ -62,6 +64,8 @@ const ItemList = ({ librosPaginados, libros, setSiguientePagina, siguientePagina
 
 			</div>
 		</main>
+
+
 	);
 };
 

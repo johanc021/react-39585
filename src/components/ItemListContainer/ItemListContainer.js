@@ -7,6 +7,8 @@ import Spinner from "../Spinner/Spinner";
 import { useParams } from 'react-router-dom';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ItemListContainer = () => {
@@ -66,6 +68,19 @@ const ItemListContainer = () => {
 						? <div>no hay productos</div>
 						: (
 							<>
+								{/* se llama al usar notifyEliminar o notifyAgregar desde FavoritosContext */}
+								<ToastContainer
+									position="top-center"
+									autoClose={700}
+									hideProgressBar={false}
+									newestOnTop={false}
+									closeOnClick
+									rtl={false}
+									pauseOnFocusLoss
+									draggable
+									pauseOnHover
+									theme="light"
+								/>
 								<div data-aos="fade-up">
 									<ItemList
 										librosPaginados={librosPaginados}
