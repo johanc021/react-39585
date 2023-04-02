@@ -5,7 +5,7 @@ export const CartContext = createContext()
 //cargue en localstorage - inicie en estado carrito
 /* const init = JSON.parse(localStorage.getItem('carrito')) || [] */
 
-export const CartProvider = ( { children } ) => {
+export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
 
@@ -23,6 +23,10 @@ export const CartProvider = ( { children } ) => {
 
     const subTotal = () => {
         return cart.reduce((total, libro) => total + libro.precio * libro.cantidad, 0);
+    }
+
+    const totalProducto = (precioU, cantidad) => {
+        return precioU * cantidad
     }
 
     const iva = () => {
@@ -76,6 +80,7 @@ export const CartProvider = ( { children } ) => {
             cantidadLibros,
             iva,
             subTotal,
+            totalProducto,
             totalCompra,
             envio,
             vaciarCarrito,

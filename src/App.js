@@ -5,7 +5,7 @@ import Navegacion from './components/Navegacion/Navegacion';
 import PiePagina from './components/PiePagina/PiePagina';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { CartProvider } from './Context/CartContext';
-import  Cart  from './components/Cart/Cart'
+import CartContainer from './components/CarContainer/CarContainer';
 import Chekout from './components/Chekout/Chekout';
 import { FavoritosProvider } from './Context/FavoritosContext';
 import FavoriteContainer from './components/FavoriteContainer/FavoriteContainer';
@@ -23,7 +23,7 @@ function App() {
                         <Route path="/libros" element={<ItemListContainer />} />
                         <Route path="/libros/:genero" element={<ItemListContainer />} />
                         <Route path="/detail/:libroId" element={<ItemDetailContainer />} />
-                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/cart" element={<CartContainer/>} />
                         <Route path="/favoritos" element={<FavoriteContainer/>} />
                         <Route path="/checkout" element={<Chekout />} />
                         <Route path="*" element={<Navigate to={"/"} />} />
