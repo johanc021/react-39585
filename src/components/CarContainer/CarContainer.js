@@ -6,7 +6,7 @@ import { formatoPrecio } from '../../helpers/formatoPrecio';
 
 const CarContainer = () => {
 
-	const { cart, totalProducto, subTotal, vaciarCarrito, eliminarLibro, actualizarCantidad,  obtenerCantidadPorId } = useContext(CartContext)
+	const { cart, totalProducto, subTotal, vaciarCarrito, actualizarCantidad, eliminarLibro } = useContext(CartContext)
 
 	if (cart.length === 0) {
 		return <div className='main carritoContainer bg-transparent'>
@@ -36,6 +36,7 @@ const CarContainer = () => {
 									{...lib}
 									totalProducto={totalProducto}
 									actualizarCantidad={actualizarCantidad}
+									eliminarLibro={eliminarLibro}
 								/>
 							))
 						}
@@ -45,10 +46,10 @@ const CarContainer = () => {
 							Subtotal de la Compra: <strong> {formatoPrecio(subTotal())}</strong>
 						</span>
 						<div className='flex gap-2'>
-							<Link className='p-2 rounded-md bg-white w-40 text-center border border-gray-500 hover:bg-green-500 hover:text-white' to={"/checkout"}>
+							<Link className='p-2 rounded-md bg-white w-40 text-center text-verde border border-gray-500 hover:bg-green-500 hover:text-white' to={"/checkout"}>
 								Finalizar compra
 							</Link>
-							<Link className='p-2 rounded-md bg-white w-40 text-center border border-gray-500 hover:bg-red-600 hover:text-white' onClick={vaciarCarrito}>
+							<Link className='p-2 rounded-md bg-white w-40 text-center text-verde border border-gray-500 hover:bg-red-600 hover:text-white' onClick={vaciarCarrito}>
 								Vaciar Carrito
 							</Link>
 						</div>
